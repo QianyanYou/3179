@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Population of Australia states in 2017",
+  "width": 900,
+  "height": 600,
+  "projection": {"type": "equirectangular"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/QianyanYou/3179/main/ne_50m_admin_1_states_provinces.topojson",
+    "format": {"type": "topojson", "feature": "ne_50m_admin_1_states_provinces"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/QianyanYou/3179/main/AUS_state_dinal.csv"
+        },
+        "key": "State/Territory",
+        "fields": ["June"]
+      }
+    },
+    {"calculate": "datum.June+ 0.1", "as": "Population"}
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "Population",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [10000, 100000, 500000],
+        "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+      }
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {"field": "June", "type": "quantitative", "title": "2017_population"}
+    ]
+  },
+  "config": {}
+}

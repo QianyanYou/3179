@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple pie chart with embedded data.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/QianyanYou/3179/main/per_AUS.csv"
+  },
+  "mark": "arc",
+  "encoding": {
+    "theta": {"field": "Percentage", "type": "quantitative"},
+    "color": {"field": "GCCSA/SUA", "type": "nominal", "title": "Country"}
+  },
+  "config": {}
+}

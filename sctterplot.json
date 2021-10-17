@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A scatterplot showing body mass and flipper lengths of penguins.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/QianyanYou/3179/main/AUS_state_dinal.csv"
+  },
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "GCCSA/SUA", "type": "ordinal"},
+    "y": {"field": "Growth", "type": "quantitative"}
+  },
+  "config": {}
+}
